@@ -1,0 +1,52 @@
+body { 
+    background-color: #c16b20;
+}
+
+#header { 
+    background-color: #A74525;
+}
+
+#w-title { 
+    color:#f1d258;
+}
+
+#navbar {
+    background-color: #512110;
+    color: white;
+}
+
+#txt-letra-1 {
+    color: white;}
+
+#txt-letra-2 {
+    color: white;}
+
+#txt-letra-3 {
+    color: white;}
+
+.navbar-toggler{ 
+    color: white;
+}
+
+#fotos img { 
+    width: 100%;
+    height: 250px;
+    object-fit: cover; 
+}
+
+#tarjeta-p-1 { 
+    background-color:#CA5E00; ;
+}
+
+#tarjeta-p-2 { 
+    background-color:#CA5E00; ;
+}
+
+#tarjeta-p-3 { 
+    background-color:#CA5E00; ;
+}
+
+
+#titulo-h2 { 
+    font-size: 35px;
+}

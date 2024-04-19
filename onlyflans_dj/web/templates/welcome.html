@@ -1,10 +1,15 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Welcome
-</body>
-</html>
+{% extends 'base.html' %} 
+
+{% block 'content' %}
+<div class="container-fluid py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <h1 class="display-4 fw-bold pb-4">¡Bienvenidos a OnlyFlans!</h1>
+        <p class="fs-4">Descubre el mundo de los flanes y déjate llevar por una experiencia única llena de sabor y dulzura.</p>
+        <a href="/" class="btn btn-info btn-lg">Login</a>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}
+
