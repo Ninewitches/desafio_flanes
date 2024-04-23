@@ -35,34 +35,19 @@
   <div class="row">
       <div class="col-12 p-5">
           <div class="card-group d-flex flex-wrap justify-content-between">
+              {% for flan in flanes_publicos %}
               <div class="col-lg-4 col-md-6 mb-3 p-3">
-                  <div class="card mb-3" id ="tarjeta-p-1">
-                      <img src="{% static 'img/flan-c.jpg' %}" class="card-img-top">
+                  <div class="card mb-3">
+                      <img src="{{ flan.image_url }}" class="card-img-top">
                       <div class="card-body">
-                          <h5 class="card-title fw-bold h4 text-center">FLAN DE <br> CHOCOLATE</h5>
+                          <h5 class="card-title fw-bold h4 text-center">{{ flan.name }}</h5>
                       </div>
                   </div>
               </div>
-              <div class="col-lg-4 col-md-6 mb-3 p-3">
-                  <div class="card mb-3" id ="tarjeta-p-2">
-                    <img src="{% static 'img/flan-f.png' %}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold h4 text-center">FLAN DE <br> FRAMBUESA</h5>
-                      </div>
-                  </div>
-              </div>
-              <div class=" col-lg-4 col-md-6 mb-3 p-3">
-                <div class="card mb-3" id ="tarjeta-p-3">
-                  <img src="{% static 'img/flan-v.png' %}" class="card-img-top">
-                  <div class="card-body">
-                      <h5 class="card-title fw-bold h4 text-center">FLAN DE <br> VAINILLA</h5>
-                    </div>
-                </div>
-            </div>
+              {% endfor %}
           </div>
       </div>
   </div>
 </div>
-
 
 {% endblock %}
