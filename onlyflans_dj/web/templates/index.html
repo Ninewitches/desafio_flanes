@@ -2,49 +2,79 @@
 {% load static %}
 
 {% block 'content' %}
-<div class="container col-xl-10 col-xxl-8 px-4 py-5" id = "contenidos">
+
+{% if user.is_authenticated %}
+<div class="container-fluid py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h1 class="display-4 fw-bold pb-4" id= "w2-title" style="color: #f1d258;"><i>¡Bienvenido, {{user.get_username}}!</i></h1>
+      <p class="fs-2">Descubre más sobre OnlyFlans y comparte con la comunidad.<br>
+        Disfruta de las recetas y el contenido. 
+      </p>
+    </div>
+  </div>
+</div>
+
+{% else %}
+<div class="container col-xl-10 col-xxl-8 px-4 py-2" id="contenidos">
     <div class="row align-items-center g-lg-5 py-5">
-      <div class="col-lg-7 mb-md-4 text-center text-lg-start">
-        <h1 class="display-4 fw-bold lh-1 mb-3" id="w-title"><i>OnlyFlans</i></h1>
-        <p class="col-lg-10 mb-md-5 mb-sm-5 fs-4">Únete a <i>OnlyFlans</i>, donde la pasión por los flanes se une. Descubre nuevas recetas, comparte tus creaciones y conecta con otros amantes de este delicioso postre.</p>
-      </div>
-      <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
-          <div class="form-floating mb-2">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Correo electrónico</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Contraseña</label>
-          </div>
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Recordarme
-            </label>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
-          <hr class="my-4">
-          <small class="text-body-secondary">Al hacer click en <b>Registrarse</b> aceptas los términos y condiciones de uso.</small>
-        </form>
-      </div>
+        <div class="col-lg-7 mb-md-4 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3" id="w-title"><i>OnlyFlans</i></h1>
+            <p class="col-lg-10 mb-md-5 mb-sm-5 fs-4">Únete a <i>OnlyFlans</i>, donde la pasión por los flanes se une. Descubre nuevas recetas, comparte tus creaciones y conecta con otros amantes de este delicioso postre.</p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+                <div class="form-floating mb-2">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Correo electrónico</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Contraseña</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Recordarme
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+                <hr class="my-4">
+                <small class="text-body-secondary">Al hacer click en <b>Registrarse</b> aceptas los términos y condiciones de uso.</small>
+            </form>
+        </div>
     </div>
 </div>
+{% endif %}
 
 <div class="container d-none d-md-block" id="fotos">
   <div class="row">
-      <div class="col-12 p-5">
+      <div class="col-12 p-2">
           <div class="card-group d-flex flex-wrap justify-content-between">
-              {% for flan in flanes_publicos %}
-              <div class="col-lg-4 col-md-6 mb-3 p-3">
-                  <div class="card mb-3">
-                      <img src="{{ flan.image_url }}" class="card-img-top">
-                      <div class="card-body">
-                          <h5 class="card-title fw-bold h4 text-center">{{ flan.name }}</h5>
-                      </div>
-                  </div>
-              </div>
-              {% endfor %}
+            {% if user.is_authenticated %}
+            {% for flan in flanes_privados %}
+                <div class="col-lg-3 col-md-6 mb-3 p-3">
+                    <div class="card mb-3">
+                        <img src="{{ flan.image_url }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold h4 text-center">{{ flan.name }}</h5>
+                            <p class="card-text" style="text-align: center;">{{ flan.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            {% for flan in flanes_publicos %}
+                <div class="col-lg-3 col-md-6 mb-3 p-3">
+                    <div class="card mb-3">
+                        <img src="{{ flan.image_url }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold h4 text-center">{{ flan.name }}</h5>
+                            <p class="card-text" style="text-align: center;">{{ flan.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
           </div>
       </div>
   </div>

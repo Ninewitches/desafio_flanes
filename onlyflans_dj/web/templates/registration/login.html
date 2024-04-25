@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block 'content' %}
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-2">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="mb-3 text-center">
+                    <label for="username" class="form-label"> <b>Usuario</b></label>
+                    <input type="text" class="form-control text-center" id="username" name="username" placeholder="Ingrese su usuario">
+                </div>
+                <div class="mb-3 text-center">
+                    <label for="password" class="form-label"><b>Contraseña</b></label>
+                    <input type="password" class="form-control text-center" id="password" name="password" placeholder="Ingrese su contraseña">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-2 mb-0">Iniciar sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if form.errors %}
+  <div class="container col-md-2 py-1">
+    <div class="alert alert-danger py-1">
+      <p class= "my-1 text-center">Su nombre de usuario y contraseña no coinciden. Inténtalo de nuevo.</p>
+    </div>
+  </div>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <div class="container">
+      <div class="alert alert-danger">
+        <p>Su cuenta no tiene acceso a esta página. Para continuar, inicie sesión con una cuenta que tenga acceso.</p>
+      </div>
+    </div>
+  {% else %}
+    <div class="container">
+      <div class="alert alert-warning">
+        <p>Por favor inicie sesión para ver esta página.</p>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% endblock %}

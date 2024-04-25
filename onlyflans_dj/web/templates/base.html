@@ -26,16 +26,32 @@
                   <li class="nav-item">
                       <a class="nav-link" href="/" id="txt-letra-1">Inicio</a>
                   </li>
+                  <!-- Se muestra Bienvenido de estar autenticado, de no ser asi, se muestra sobre nosotros. -->
+                  {% if user.is_authenticated %}
                   <li class="nav-item">
                       <a class="nav-link" href="bienvenido" id="txt-letra-2">Bienvenido</a>
                   </li>
+                  {% else %}
                   <li class="nav-item">
                       <a class="nav-link" href="acerca" id="txt-letra-3">Sobre Nosotros</a>
                   </li>
+                  {% endif %}
                   <li class="nav-item">
                     <a class="nav-link" href="contacto" id="txt-letra-3">Contacto</a>
-                </li>
-              </ul>
+                  </li>
+                  <!-- Se agrega botón de Login/Logout dependiendo de si está autenticado o no -->
+                  {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <form action="{% url 'logout' %}" type="submit">
+                            <button type="submit" class="btn btn-danger mx-2 py-1">Cerrar sesion</button>
+                        </form>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-primary mx-2 py-1" type="submit" href="{% url 'login' %}">Iniciar sesion</a>
+                    </li>
+                  {% endif %}
+            </ul>
           </div>
       </div>
   </nav>

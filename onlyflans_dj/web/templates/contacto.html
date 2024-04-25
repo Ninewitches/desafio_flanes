@@ -1,48 +1,46 @@
 {% extends 'base.html' %} 
 
 {% block 'content' %}
-<div class="container">
-
-    <div class = "col-12 col-md-6 offset-0 offset-md-3 mt-4 mb-4">
-        <h3 class = "text-center display-6">
-            <b>Contáctanos</b>
-        </h3>
+<div class="container col-xl-10 col-xxl-8 px-4 py-2">
+    <div class = "col-12 col-md-6 offset-0 offset-md-3 mt-4 mb-0">
+        <h1 class="display-4 fw-bold lh-1 mt-3 text-center pb-2" style="color: #f1d258;"><i>Contáctanos</i></h1>
+    </div>
+    <div class="row align-items-center g-lg-5 py-2">
+        <div class="col-md-10 mx-auto col-lg-5">
+            <form action="/contacto" method="post" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="{{ form.customer_name.id_for_label }}" name="{{ form.customer_name.html_name }}" placeholder="Nombre">
+                    <label for="{{ form.customer_name.id_for_label }}">Nombre:</label>
+                    <div class="text-danger">
+                        {{ form.customer_name.errors }}
+                    </div>
+                </div>
+                
+                <div class="form-floating mb-2">
+                    <input type="email" class="form-control" id="{{ form.customer_email.id_for_label }}" name="{{ form.customer_email.html_name }}" placeholder="Correo electrónico">
+                    <label for="{{ form.customer_email.id_for_label }}">Correo:</label>
+                    <div class="text-white">
+                        {{ form.customer_email.errors }}
+                    </div>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="{{ form.message.id_for_label }}" name="{{ form.message.html_name }}" placeholder="Mensaje"></textarea>
+                    <label for="{{ form.message.id_for_label }}">Mensaje:</label>
+                    <div class="text-danger">
+                        {{ form.message.errors }}
+                    </div>
+                </div>
+                
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Enviar</button>
+            </form>
         </div>
-
-        <form action="/contacto" method="post">
-            {% csrf_token %}
-            {{ form.non_field_errors }}
-        
-            <div class="mb-3">
-                <label for="{{ form.customer_name.id_for_label }}">Nombre:</label>
-                {{ form.customer_name }}
-                <div class="text-danger">
-                    {{ form.customer_name.errors }}
-                </div>
-            </div>
-        
-            <div class="mb-3">
-                <label for="{{ form.customer_email.id_for_label }}">Correo: </label>
-                {{ form.customer_email }}
-                <div class="text-white">
-                    {{ form.customer_email.errors }}
-                </div>
-            </div>
-        
-            <div class="mb-3">
-                <label for="{{ form.message.id_for_label }}">Mensaje:</label>
-                {{ form.message }}
-                <div class="text-danger">
-                    {{ form.message.errors }}
-                </div>
-            </div>
-        
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-        
-    
-
+    </div>
 </div>
+
 
 
 {% endblock %}  

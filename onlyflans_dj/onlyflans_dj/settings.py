@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,11 @@ SECRET_KEY = 'django-insecure-onga4$k#k$-ui-&$g#t8ob91ncmk4bodii@23@9)&1^*^4+x&f
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+
+# URLS DE LOGIN / LOG OUT
+
+LOGIN_REDIRECT_URL = '/bienvenido'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Application definition
@@ -55,7 +61,7 @@ ROOT_URLCONF = 'onlyflans_dj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
