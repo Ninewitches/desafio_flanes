@@ -1,16 +1,23 @@
 {% extends 'base.html' %} 
 
 {% block 'content' %}
-<div class="container-fluid py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 text-center">
-        <h1 class="display-4 fw-bold pb-4" id= "w2-title" style="color: #f1d258;"><i>¡Bienvenido, {{user.get_username}}!</i></h1>
-        <p class="fs-2">Descubre el mundo de los flanes y déjate llevar por una experiencia única llena de sabor y dulzura.</p>
+
+<div class="container-fluid py-2 pt-4">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-8 text-center">
+      <h1 class="display-4 fw-bold pb-2" id="w2-title" style="color: #f1d258;"><i>¡Bienvenido, {{user.get_username}}!</i></h1>
+      <p class="fs-4">Descubre el mundo de los flanes y déjate llevar por una experiencia única llena de sabor.</p>
+      <div class="py-2">
         <img src="https://z-p3-scontent.fscl27-1.fna.fbcdn.net/v/t31.18172-8/18699702_10154605332947338_5256962959916997931_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGPxHXwDsVfEvD6tr8HU3lwVrWhoorm9PVWtaGiiub09QWewrubxlXuj2RSpWpw12A&_nc_ohc=IE2ueQzWu-UAb4eEbUJ&_nc_ht=z-p3-scontent.fscl27-1.fna&oh=00_AfCyF2wLvnyD_CJTDSqoAwF_WuPCYhGnY4FQo5rifMiS4Q&oe=6652049D" 
-        alt="flan de frambuesa" class="py-2" style="width: 600px;">
+          alt="flan de frambuesa" style="width: 600px;">
+      </div>
+      <div class="py-2">
+        <a href="/" class="btn btn-primary">Ir a Inicio</a>
       </div>
     </div>
   </div>
+</div>
+
   
 {% endblock %}
 
